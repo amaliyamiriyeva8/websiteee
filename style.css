@@ -7,6 +7,17 @@
 *:focus{
     outline: none;
 }
+#add{
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 60px;
+    border-style: none;
+    cursor: pointer;
+}
+#add i{
+    font-size: 17px;
+}
 nav{
     width: 100%;
     position: fixed;
@@ -68,7 +79,7 @@ nav .navbar{
     width: 200px;
 }
 .b1{
-    width: 500px;
+    width: 550px;
 }
 ul{
 
@@ -91,7 +102,7 @@ li{
     width: 100%;
     padding: 165px 0px;
     background-size: cover;
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../a.webp');
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('./images/a.webp');
    
 }
 .head{
@@ -182,8 +193,10 @@ li{
 .for{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center; 
+    flex-wrap: wrap;
+    gap: 40px;
 }
 .each{
     gap: 10px;
