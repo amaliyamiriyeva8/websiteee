@@ -1,7 +1,7 @@
 const nav = document.querySelector("nav")
 const forname = document.querySelector(".for")
 
-let page=1;
+
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
         nav.style.backgroundColor = "rgba(0,0,0,0.8)"
@@ -87,17 +87,18 @@ fetch(`http://localhost:3000/post?_page=${page}&_limit=3`)
 
     })
 }
-
-getDataJson();
+let page=1;
 let load=document.querySelector(".mean")
 load.addEventListener("click",()=>{
 page++;
 getDataJson();
 })
+getDataJson();
 function addToFav(id) {
-    fetch('http://localhost:3000/post/' + id).then(res => res.json())
+    fetch('http://localhost:3000/post/' + id)
+        .then(res => res.json())
         .then(data => {
-            axios.post('http://localhost:3000/favorites/', data)
+        axios.post('http://localhost:3000/favorites/', data)
         })
 }
 

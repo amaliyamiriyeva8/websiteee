@@ -50,9 +50,6 @@ fetch(`http://localhost:3000/post/${id}`)
                 <h1>${data.name}</h1>
                 <p>${data.description}</p>
              </div>
-                   <button>View Details</button>
-                   <button>Delete</button>
-                   <button>Edit</button>
             </div>
         </div>
         `
