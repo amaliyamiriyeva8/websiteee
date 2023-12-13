@@ -674,6 +674,9 @@ footer{
         text-align: center;
         width: 100%;
     }
+    .f-1 {
+        width: 100%;
+    }
 }
 @media screen and (max-width:788px) {
     ul{

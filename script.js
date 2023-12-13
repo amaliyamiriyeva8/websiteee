@@ -1,5 +1,7 @@
 const nav = document.querySelector("nav")
 const forname = document.querySelector(".for")
+
+let page=1;
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
         nav.style.backgroundColor = "rgba(0,0,0,0.8)"
@@ -33,17 +35,14 @@ was.addEventListener("click", (e) => {
         icon.style.display = "flex"
     }
 })
-
-fetch(`http://localhost:3000/post`)
+function getDataJson(){
+fetch(`http://localhost:3000/post?_page=${page}&_limit=3`)
     .then(res => res.json())
     .then(data => {
 
         axios.get('http://localhost:3000/favorites')
             .then(fav => {
-               
-
                 data.forEach(element => {
-
                     if (fav.data.find(f => f.id === element.id)) {
 
                         forname.innerHTML += `
@@ -57,10 +56,9 @@ fetch(`http://localhost:3000/post`)
                 <h1>${element.name}</h1>
                 <p>${element.description}</p>
              </div>
-               
                    <button onclick="goTo(${element.id})">View Details</button>
                    <button onclick="deleteEl(${element.id})">Delete</button>
-                   <button>Edit</button>
+                   <button onclick="editEl(${element.id})">Edit</button>
             </div>
         </div>
         `} else {
@@ -78,7 +76,7 @@ fetch(`http://localhost:3000/post`)
                    
                        <button onclick="goTo(${element.id})">View Details</button>
                        <button onclick="deleteEl(${element.id})">Delete</button>
-                       <button>Edit</button>
+                       <button onclick="editEl(${element.id})">Edit</button>
                 </div>
             </div>
             `
@@ -88,7 +86,14 @@ fetch(`http://localhost:3000/post`)
 
 
     })
+}
 
+getDataJson();
+let load=document.querySelector(".mean")
+load.addEventListener("click",()=>{
+page++;
+getDataJson();
+})
 function addToFav(id) {
     fetch('http://localhost:3000/post/' + id).then(res => res.json())
         .then(data => {
@@ -109,8 +114,16 @@ function deleteEl(id) {
     axios.delete(`http://localhost:3000/post/${id}`);
     window.location.reload();
 }
+function editEl(id) {
+    window.location = `./edit.html?id=${id}`
+}
 let add = document.querySelector("#add")
 add.addEventListener('click', () => {
     window.location = `./add.html?id`
+})
+
+let click=document.querySelector("#click")
+click.addEventListener("click",()=>{
+    window.location=`./favorites.html?id`
 })
 
