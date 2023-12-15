@@ -628,8 +628,21 @@ footer{
     color: #000000;
 }
 
-
-
+#click{
+    position: relative;
+  
+}
+.pEl::before{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fab700;
+    height: 0.5em;
+    right: 0px;
+    margin-top: -1em;
+    width: 0.5em;
+    bottom: 19px;
+}
 
 
 

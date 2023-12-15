@@ -1,6 +1,6 @@
 let id=new URLSearchParams(window.location.search).get("id");
 const sections=document.querySelector(".for")
-fetch(`http://localhost:3000/post/${id}`)
+fetch(`http://localhost:3000/favorites`)
 .then(res=>res.json())
 .then(data=>{
    data.forEach(element => {
@@ -14,9 +14,13 @@ fetch(`http://localhost:3000/post/${id}`)
            <h1>${element.name}</h1>
            <p>${element.description}</p>
         </div>
+        <button onclick="deleteEl(${element.id})">Delete</button>
        </div>
    </div>
    `
 })  
 });
 
+function deleteEl(id) {    
+   axios.delete('http://localhost:3000/favorites/'+id)
+}
